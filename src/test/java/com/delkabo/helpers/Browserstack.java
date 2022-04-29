@@ -1,5 +1,7 @@
 package com.delkabo.helpers;
 
+import com.delkabo.config.Project;
+
 import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
 
@@ -7,8 +9,8 @@ public class Browserstack {
     // todo hide with Owner
     // DO NOT STORE CREDENTIALS, ONLY FOR EXAMPLE
     public static String
-            browserstackLogin = "tpuretest_lSVWc2",
-            browserstackPassword = "Ggd5nW19cyeGseGGn2m6";
+            browserstackLogin = Project.getLoginbs(),
+            browserstackPassword = Project.getPasswordbs();
 
     public static String videoUrl(String sessionId) {
         String url = format("https://api-cloud.browserstack.com/app-automate/sessions/%s.json", sessionId);
