@@ -26,9 +26,6 @@ public class TestBase {
     public static void setup() {
         addListener("AllureSelenide", new AllureSelenide());
 
-
-
-
         if (config.deviceHost().equals("browserstack")) {
             Configuration.browser = BrowserstackMobileDriver.class.getName();
         } else if(config.deviceHost().equals("emulation")) {
