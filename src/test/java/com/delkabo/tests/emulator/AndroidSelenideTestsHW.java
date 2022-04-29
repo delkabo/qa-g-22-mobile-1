@@ -4,8 +4,10 @@ package com.delkabo.tests.emulator;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import com.delkabo.config.CredentionalConfig;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Description;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +18,10 @@ import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
 
 public class AndroidSelenideTestsHW extends TestBase {
+
+    CredentionalConfig configC = ConfigFactory.create(CredentionalConfig.class, System.getProperties());
+    String login = configC.loginWP();
+    String password = configC.passwordWP();
 
     @Test
     @Description("Check add article in Saved")
@@ -102,9 +108,9 @@ public class AndroidSelenideTestsHW extends TestBase {
 //            android.widget.EditText
             $(AppiumBy.id("org.wikipedia.alpha:id/create_account_login_button")).click();
             $(AppiumBy.xpath("//android.widget.EditText[@text='Username']")).click();
-            $(AppiumBy.xpath("//android.widget.EditText[@text='Username']")).setValue("Kandebober"); //todo спрятать
+            $(AppiumBy.xpath("//android.widget.EditText[@text='Username']")).setValue(login); //todo спрятать
             $(AppiumBy.xpath("//android.widget.EditText[@text='Password']")).click();
-            $(AppiumBy.xpath("//android.widget.EditText[@text='Password']")).setValue("Kam1naWiki");
+            $(AppiumBy.xpath("//android.widget.EditText[@text='Password']")).setValue(password);
             $(AppiumBy.id("org.wikipedia.alpha:id/login_button")).click();
 
             $(AppiumBy.xpath("//android.widget.Button[@text='NO THANKS']")).click();
