@@ -16,6 +16,14 @@ import static com.delkabo.helpers.Browserstack.browserstackPassword;
 
 public class BrowserstackMobileDriver implements WebDriverProvider {
 
+    public static URL getBrowserstackUrl() {
+        try {
+            return new URL(Project.getUrl());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public WebDriver createDriver(Capabilities capabilities) {
         MutableCapabilities mutableCapabilities = new MutableCapabilities();
@@ -33,11 +41,4 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
         return new RemoteWebDriver(getBrowserstackUrl(), mutableCapabilities);
     }
 
-    public static URL getBrowserstackUrl() {
-        try {
-            return new URL(Project.getUrl());
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
