@@ -18,7 +18,7 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
 
     public static URL getBrowserstackUrl() {
         try {
-            return new URL(Project.getUrl());
+            return new URL(Project.config.url());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -31,7 +31,7 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
         mutableCapabilities.setCapability("browserstack.appium_version", "1.22.0");
         mutableCapabilities.setCapability("browserstack.user", browserstackLogin);
         mutableCapabilities.setCapability("browserstack.key", browserstackPassword);
-        mutableCapabilities.setCapability("app", Project.getIdentapp());
+        mutableCapabilities.setCapability("app", Project.config.identificateapp());
         mutableCapabilities.setCapability("device", "Google Pixel 3");
         mutableCapabilities.setCapability("os_version", "9.0");
         mutableCapabilities.setCapability("project", "QA.GURU lesson 11/22");

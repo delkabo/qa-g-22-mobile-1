@@ -9,6 +9,7 @@ import com.delkabo.config.Project;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Description;
 import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,7 +22,7 @@ import static io.qameta.allure.Allure.step;
 public class AndroidSelenideTestsHW extends TestBase {
 
     @Test
-    @Description("Check add article in Saved")
+    @Description("Check add article in Saved and Delete article from Saved")
     void addInSavedTest() {
 
         step("Skip onboarding", Selenide::back);
@@ -52,15 +53,6 @@ public class AndroidSelenideTestsHW extends TestBase {
 
         step("Check Saved", () ->
                 $$(AppiumBy.id("org.wikipedia.alpha:id/page_list_item_title")).shouldHave(sizeGreaterThan(0)));
-    }
-
-
-    @Test
-    @Description("Delete article from Saved")
-    void deleteFromSavedTest() {
-
-        step("Previous Test: Check add article in Saved", () ->
-                addInSavedTest());
 
         step("Skip onboarding", Selenide::back);
 
@@ -91,71 +83,64 @@ public class AndroidSelenideTestsHW extends TestBase {
     }
 
 
-    @Test
-    @Description("login")
-    void loginTest() {
-        step("Skip onboarding", Selenide::back);
-
-        step("Click on More", () -> {
-            $(AppiumBy.xpath("//android.widget.FrameLayout[@content-desc='More']")).click();
-            $(AppiumBy.xpath("//android.widget.TextView[@text='LOG IN / JOIN WIKIPEDIA']")).click();
-        });
-
-        step("login and password", () -> {
-//            android.widget.EditText
-            $(AppiumBy.id("org.wikipedia.alpha:id/create_account_login_button")).click();
-            $(AppiumBy.xpath("//android.widget.EditText[@text='Username']")).click();
-            $(AppiumBy.xpath("//android.widget.EditText[@text='Username']")).setValue(Project.getLoginwp()); //todo спрятать
-            $(AppiumBy.xpath("//android.widget.EditText[@text='Password']")).click();
-            $(AppiumBy.xpath("//android.widget.EditText[@text='Password']")).setValue(Project.getPasswordwp());
-            $(AppiumBy.id("org.wikipedia.alpha:id/login_button")).click();
-
-            $(AppiumBy.xpath("//android.widget.Button[@text='NO THANKS']")).click();
-        });
-
-        step("Check login", () -> {
-            $(AppiumBy.xpath("//android.widget.FrameLayout[@content-desc='More']")).click();
-            $(AppiumBy.id("org.wikipedia.alpha:id/main_drawer_account_name")).shouldHave(Condition.text("Kandebober"));
-        });
-
-
-    }
-
-
-    @Test
-    @Description("logout")
-    void logoutTest() {
-
-        step("Skip onboarding", Selenide::back);
-
-        step("Click button 'NO THANKS' in popup", () -> {
-            if ($(AppiumBy.xpath("//android.widget.Button[@text='NO THANKS']")).exists()) {
-                $(AppiumBy.xpath("//android.widget.Button[@text='NO THANKS']")).click();
-            }
-        });
-
-        step("Enter in settings", () -> {
-            $(AppiumBy.xpath("//android.widget.FrameLayout[@content-desc='More']")).click();
-            $(AppiumBy.id("org.wikipedia.alpha:id/main_drawer_settings_container")).click();
-        });
-
-        step("Logout from profile", () -> {
-            WebDriver driver = WebDriverRunner.getWebDriver();
-            WebElement elementApp = (WebElement) driver.findElement(AppiumBy.androidUIAutomator(
-                    "new UiScrollable(new UiSelector().scrollable(true))" +
-                            ".scrollIntoView(new UiSelector().resourceIdMatches(\"org.wikipedia.alpha:id/logoutButton\"))"));
-            elementApp.click();
-
-            $(AppiumBy.id("android:id/button1")).click();
-        });
-
-        step("check logout", () -> {
-            $(AppiumBy.xpath("//android.widget.FrameLayout[@content-desc='More']")).click();
-            $(AppiumBy.id("org.wikipedia.alpha:id/main_drawer_login_button")).shouldHave(Condition.exist);
-        });
+//    @Test
+//    @Description("login and logout")
+//    void loginTest() {
+//        step("Skip onboarding", Selenide::back);
+//
+//        step("Click on More", () -> {
+//            $(AppiumBy.xpath("//android.widget.FrameLayout[@content-desc='More']")).click();
+//            $(AppiumBy.xpath("//android.widget.TextView[@text='LOG IN / JOIN WIKIPEDIA']")).click();
+//        });
+//
+//        step("login and password", () -> {
+////            android.widget.EditText
+//            $(AppiumBy.id("org.wikipedia.alpha:id/create_account_login_button")).click();
+//            $(AppiumBy.xpath("//android.widget.EditText[@text='Username']")).click();
+//            $(AppiumBy.xpath("//android.widget.EditText[@text='Username']")).setValue(Project.config.loginWP());
+//            $(AppiumBy.xpath("//android.widget.EditText[@text='Password']")).click();
+//            $(AppiumBy.xpath("//android.widget.EditText[@text='Password']")).setValue(Project.config.passwordWP());
+//            $(AppiumBy.id("org.wikipedia.alpha:id/login_button")).click();
+//
+//            $(AppiumBy.xpath("//android.widget.Button[@text='NO THANKS']")).click();
+//        });
+//
+//        step("Check login", () -> {
+//            $(AppiumBy.xpath("//android.widget.FrameLayout[@content-desc='More']")).click();
+//            $(AppiumBy.id("org.wikipedia.alpha:id/main_drawer_account_name")).shouldHave(Condition.text("Kandebober"));
+//        });
+//
+//
+//        step("Skip onboarding", Selenide::back);
+//
+//        step("Click button 'NO THANKS' in popup", () -> {
+//            if ($(AppiumBy.xpath("//android.widget.Button[@text='NO THANKS']")).exists()) {
+//                $(AppiumBy.xpath("//android.widget.Button[@text='NO THANKS']")).click();
+//            }
+//        });
+//
+//        step("Enter in settings", () -> {
+//            $(AppiumBy.xpath("//android.widget.FrameLayout[@content-desc='More']")).click();
+//            $(AppiumBy.id("org.wikipedia.alpha:id/main_drawer_settings_container")).click();
+//        });
+//
+//        step("Logout from profile", () -> {
+//            WebDriver driver = WebDriverRunner.getWebDriver();
+//            WebElement elementApp = (WebElement) driver.findElement(AppiumBy.androidUIAutomator(
+//                    "new UiScrollable(new UiSelector().scrollable(true))" +
+//                            ".scrollIntoView(new UiSelector().resourceIdMatches(\"org.wikipedia.alpha:id/logoutButton\"))"));
+//            elementApp.click();
+//
+//            $(AppiumBy.id("android:id/button1")).click();
+//        });
+//
+//        step("check logout", () -> {
+//            $(AppiumBy.xpath("//android.widget.FrameLayout[@content-desc='More']")).click();
+//            $(AppiumBy.id("org.wikipedia.alpha:id/main_drawer_login_button")).shouldHave(Condition.exist);
+//        });
 
 
-    }
+//    }
 }
 
 
