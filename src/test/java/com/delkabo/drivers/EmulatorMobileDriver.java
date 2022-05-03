@@ -1,11 +1,11 @@
 package com.delkabo.drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import com.delkabo.config.ProjectConfig;
+import com.delkabo.config.CredentialConfig;
+import com.delkabo.config.Project;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.remote.AutomationName;
-import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 
@@ -21,21 +21,13 @@ import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 public class EmulatorMobileDriver implements WebDriverProvider {
     File app = getApp();
 
-    ProjectConfig configMy = ConfigFactory.create(ProjectConfig.class, System.getProperties());
-
     @Override
     public WebDriver createDriver(Capabilities capabilities) {
         UiAutomator2Options options = new UiAutomator2Options();
         options.merge(capabilities);
         options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
-
-        if (configMy.deviceHost().equals("emulation") && configMy.deviceHost().equals("")) {
-            options.setPlatformName("Android");
-        } else if (configMy.deviceHost().equals("real")) {
-            options.setDeviceName("dce383e7");
-        }
-
-        options.setDeviceName("Pixel_4_API_30");
+        options.setPlatformName("Android");
+        options.setDeviceName(Project.config.deviceName());
         options.setPlatformVersion("11.0");
         options.setApp(app.getAbsolutePath());
         options.setLocale("en");
@@ -50,7 +42,7 @@ public class EmulatorMobileDriver implements WebDriverProvider {
 
     public static URL getAppiumServerUrl() {
         try {
-            return new URL("http://localhost:4723/wd/hub");
+            return new URL(Project.config.url());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }

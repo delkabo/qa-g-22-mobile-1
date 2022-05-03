@@ -9,8 +9,8 @@ public class Browserstack {
     // todo hide with Owner
     // DO NOT STORE CREDENTIALS, ONLY FOR EXAMPLE
     public static String
-            browserstackLogin = Project.getLoginbs(),
-            browserstackPassword = Project.getPasswordbs();
+            browserstackLogin = Project.config.loginBS(),//Project.getLoginbs(),
+            browserstackPassword = Project.config.passwordBS(); //Project.getPasswordbs();
 
     public static String videoUrl(String sessionId) {
         String url = format("https://api-cloud.browserstack.com/app-automate/sessions/%s.json", sessionId);
