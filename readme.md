@@ -42,6 +42,8 @@
 >Команда: ```adb devices```
 * Добавить данные:
 >```
+>loginWP=***** -логин от аккаунта Wikipedia
+>passwordWP=***** -пароль от аккаунта Wikipedia
 >deviceName=******** - deviceName из adb
 >platformName=Android
 >platformVersion=**** -  platformVersion версия из настроек смартфона
