@@ -32,8 +32,8 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
         mutableCapabilities.setCapability("browserstack.user", browserstackLogin);
         mutableCapabilities.setCapability("browserstack.key", browserstackPassword);
         mutableCapabilities.setCapability("app", Project.config.identificateapp());
-        mutableCapabilities.setCapability("device", "Google Pixel 3");
-        mutableCapabilities.setCapability("os_version", "9.0");
+        mutableCapabilities.setCapability("device", Project.config.deviceName());
+        mutableCapabilities.setCapability("os_version", Project.config.platformVersion());
         mutableCapabilities.setCapability("project", "QA.GURU lesson 11/22");
         mutableCapabilities.setCapability("build", "browserstack-build-1");
         mutableCapabilities.setCapability("name", "Sample tests run");

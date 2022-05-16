@@ -26,9 +26,9 @@ public class EmulatorMobileDriver implements WebDriverProvider {
         UiAutomator2Options options = new UiAutomator2Options();
         options.merge(capabilities);
         options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
-        options.setPlatformName("Android");
+        options.setPlatformName(Project.config.platformName());
         options.setDeviceName(Project.config.deviceName());
-        options.setPlatformVersion("11.0");
+        options.setPlatformVersion(Project.config.platformVersion());
         options.setApp(app.getAbsolutePath());
         options.setLocale("en");
         options.setLanguage("en");
@@ -50,8 +50,7 @@ public class EmulatorMobileDriver implements WebDriverProvider {
 
     private File getApp() {
         String appPath = "src/test/resources/apk/app-alpha-universal-release.apk";
-        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia/" +
-                "releases/download/latest/app-alpha-universal-release.apk?raw=true";
+        String appUrl = Project.config.app();
         File app = new File(appPath);
         if (!app.exists()) {
             try (InputStream in = new URL(appUrl).openStream()) {

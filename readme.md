@@ -2,24 +2,28 @@
 
 ## Запуск в browserstack
 * Создать файл с настройками:
-> ```src/test/resources/config/browserstack.properties```
+> ```src/test/resources/property/browserstack.properties```
 >
 * Добавить данные:
 >```
+>loginWP=***** -логин от аккаунта Wikipedia
+>passwordWP=***** -пароль от аккаунта Wikipedia
 >deviceName=Google Pixel 3
 >platformVersion=9.0
 >user=bsuse***** - взять из browserstack
 >key=3Sjd********** - взять из browserstack
->app=bs://b0532bd2d289a275a8eb997acdabc0f8f2d491e2
+>app=bs://16f7f4a9fdc91a1b1dc98de925d3c3714065f283
 >url=http://hub.browserstack.com/wd/hub
 >```
 * Запуск тестов
-> ```./gradlew clean selenide_android_test -Ddevice=browserstack```
+> ```./gradlew clean test -Ddevice=browserstack```
 ## Запуск в emulator
 * Создать файл с настройками:
-> ```src/test/resources/config/emulator.properties```
+> ```src/test/resources/property/emulator.properties```
 * Добавить данные:
 >```
+>loginWP=***** -логин от аккаунта Wikipedia
+>passwordWP=***** -пароль от аккаунта Wikipedia
 >deviceName=******** - @DefaultValue("Pixel_4")
 >platformName=Android
 >platformVersion=**** -  @DefaultValue("11.0")
@@ -28,11 +32,11 @@
 >```
 * Запустить Appium на 4723 порту
 * Запуск тестов
-> ```./gradlew clean selenide_android_test -Ddevice=emulator```
+> ```./gradlew clean test -Ddevice=emulator```
 
 ## Запуск в реальном девайсе
 * Создать файл с настройками:
-> ```src/test/resources/config/real.properties```
+> ```src/test/resources/property/real.properties```
 >
 * Узнать deviceName через adb:
 >Команда: ```adb devices```
@@ -40,11 +44,11 @@
 >```
 >deviceName=******** - deviceName из adb
 >platformName=Android
->platformVersion=**** -  platformVersion из мобилы
+>platformVersion=**** -  platformVersion версия из настроек смартфона
 >app=https://github.com/wikimedia/apps-android-wikipedia/releases/download/latest/app-alpha-universal-release.apk?raw=true
 >url=http://localhost:4723/wd/hub
 >```
 * Запустить Appium на 4723 порту
 * Запуск тестов
-> ```./gradlew clean selenide_android_test -Ddevice=real```
+> ```./gradlew clean test -Ddevice=real```
 >  

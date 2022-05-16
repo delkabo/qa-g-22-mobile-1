@@ -9,14 +9,20 @@ import org.junit.jupiter.params.provider.CsvSource;
 })
 public interface CredentialConfig extends Config {
 
-    @Key("deviceName")
-    String deviceName();
-
     @Key("loginWP")
     String loginWP();
 
     @Key("passwordWP")
     String passwordWP();
+
+    @Key("deviceName")
+    String deviceName();
+
+    @Key("platformName")
+    String platformName();
+
+    @Key("platformVersion")
+    String platformVersion();
 
     @Key("loginBS")
     String loginBS();
@@ -29,5 +35,8 @@ public interface CredentialConfig extends Config {
 
     @Key("url")
     String url();
+
+    @Key("app")
+    String app();
 
 }
