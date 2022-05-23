@@ -46,11 +46,6 @@ public class TestBase {
 
         String sessionId = "";
 
-        if (Project.ifBrowserStack()) {
-            sessionId = Attach.sessionId();
-            Attach.video(sessionId);
-        }
-
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
 
