@@ -1,4 +1,4 @@
-package com.delkabo.helpers;
+package com.delkabo.mobile.helpers;
 
 
 import io.qameta.allure.Attachment;

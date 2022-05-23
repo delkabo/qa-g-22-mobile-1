@@ -1,7 +1,7 @@
-package com.delkabo.drivers;
+package com.delkabo.mobile.drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import com.delkabo.config.Project;
+import com.delkabo.mobile.config.Project;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
@@ -10,8 +10,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.delkabo.helpers.Browserstack.browserstackLogin;
-import static com.delkabo.helpers.Browserstack.browserstackPassword;
+import static com.delkabo.mobile.helpers.Browserstack.browserstackLogin;
+import static com.delkabo.mobile.helpers.Browserstack.browserstackPassword;
 
 
 public class BrowserstackMobileDriver implements WebDriverProvider {

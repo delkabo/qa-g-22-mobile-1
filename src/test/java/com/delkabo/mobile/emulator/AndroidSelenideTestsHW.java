@@ -1,15 +1,12 @@
-package com.delkabo.tests.emulator;
+package com.delkabo.mobile.emulator;
 
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import com.delkabo.config.CredentialConfig;
-import com.delkabo.config.Project;
+import com.delkabo.mobile.config.Project;
 import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Description;
-import org.aeonbits.owner.ConfigFactory;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,4 +1,4 @@
-package com.delkabo.config;
+package com.delkabo.mobile.config;
 
 import org.aeonbits.owner.ConfigFactory;
 

@@ -1,4 +1,4 @@
-package com.delkabo.tests.emulator;
+package com.delkabo.mobile.emulator;
 
 
 import com.codeborne.selenide.Selenide;

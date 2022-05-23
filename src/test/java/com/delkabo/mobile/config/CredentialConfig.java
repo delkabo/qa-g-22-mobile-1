@@ -1,8 +1,6 @@
-package com.delkabo.config;
+package com.delkabo.mobile.config;
 
-import net.bytebuddy.implementation.bind.annotation.Default;
 import org.aeonbits.owner.Config;
-import org.junit.jupiter.params.provider.CsvSource;
 
 @Config.Sources({
         "classpath:property/${deviceHost}.properties"

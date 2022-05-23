@@ -1,11 +1,11 @@
-package com.delkabo.tests.emulator;
+package com.delkabo.mobile.emulator;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.delkabo.config.Project;
-import com.delkabo.drivers.BrowserstackMobileDriver;
-import com.delkabo.drivers.EmulatorMobileDriver;
-import com.delkabo.helpers.Attach;
+import com.delkabo.mobile.config.Project;
+import com.delkabo.mobile.drivers.BrowserstackMobileDriver;
+import com.delkabo.mobile.drivers.EmulatorMobileDriver;
+import com.delkabo.mobile.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;

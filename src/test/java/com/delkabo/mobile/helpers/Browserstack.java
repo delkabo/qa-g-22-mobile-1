@@ -1,6 +1,6 @@
-package com.delkabo.helpers;
+package com.delkabo.mobile.helpers;
 
-import com.delkabo.config.Project;
+import com.delkabo.mobile.config.Project;
 
 import static io.restassured.RestAssured.given;
 import static java.lang.String.format;
